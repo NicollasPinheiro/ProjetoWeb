@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Mensagem de Contato</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #1C1C1E;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #1C1C1E; padding: 20px 0;">
+        <tr>
+            <td align="center">
+                <table width="600" cellpadding="0" cellspacing="0" style="background-color: #000000; border-radius: 10px; overflow: hidden;">
+                    
+                    <!-- Header -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #FF003C, #eb4e6a); padding: 30px; text-align: center;">
+                            <h1 style="color: #ffffff; margin: 0; font-size: 32px; letter-spacing: 2px;">GAMER RAVE</h1>
+                            <p style="color: #ffffff; margin: 10px 0 0; font-size: 14px; opacity: 0.9;">Nova mensagem de contato recebida</p>
+                        </td>
+                    </tr>
+                    
+                    <!-- Content -->
+                    <tr>
+                        <td style="padding: 30px;">
+                            
+                            <!-- Info Box -->
+                            <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #1C1C1E; border-radius: 8px; margin-bottom: 20px;">
+                                <tr>
+                                    <td style="padding: 20px;">
+                                        <table width="100%" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td style="padding: 10px 0; color: #FF003C; font-weight: bold; font-size: 14px;">👤 Nome:</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 0 0 15px; color: #ffffff; font-size: 16px;">{{nome}}</td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td style="padding: 10px 0; color: #FF003C; font-weight: bold; font-size: 14px;">📧 E-mail:</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 0 0 15px; color: #ffffff; font-size: 16px;">
+                                                    <a href="mailto:{{email}}" style="color: #ffffff; text-decoration: none;">{{email}}</a>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td style="padding: 10px 0; color: #FF003C; font-weight: bold; font-size: 14px;">📋 Assunto:</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 0 0 15px; color: #ffffff; font-size: 16px;">{{assunto}}</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Message Box -->
+                            <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #1C1C1E; border-left: 4px solid #FF003C; border-radius: 8px;">
+                                <tr>
+                                    <td style="padding: 20px;">
+                                        <p style="color: #FF003C; font-weight: bold; font-size: 14px; margin: 0 0 10px;">💬 Mensagem:</p>
+                                        <p style="color: #ffffff; font-size: 15px; line-height: 1.6; margin: 0;">{{mensagem}}</p>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Action Button -->
+                            <table width="100%" cellpadding="0" cellspacing="0" style="margin-top: 25px;">
+                                <tr>
+                                    <td align="center">
+                                        <a href="mailto:{{email}}" style="display: inline-block; padding: 14px 40px; background-color: #FF003C; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px; letter-spacing: 1px;">
+                                            RESPONDER AGORA
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #000000; padding: 20px; text-align: center; border-top: 1px solid #333;">
+                            <p style="color: #666; font-size: 12px; margin: 0;">
+                                Mensagem recebida em {{data}} via site Gamer Rave
+                            </p>
+                            <p style="color: #444; font-size: 11px; margin: 10px 0 0;">
+                                © {{ano}} Gamer Rave - Todos os direitos reservados
+                            </p>
+                        </td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

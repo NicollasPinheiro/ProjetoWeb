@@ -1,0 +1,111 @@
+# Liga o módulo de reescrita de URL do Apache
+RewriteEngine On
+
+# Impede que o usuário veja a listagem de arquivos/pastas pelo navegador
+Options -Indexes
+
+# --------------------------------------------------
+# URL AMIGÁVEL DO PRODUTO
+# --------------------------------------------------
+# Exemplo:
+# /produto/15/notebook-gamer-dell-g15
+#
+# Internamente acessa:
+# product.php?id=15&slug=notebook-gamer-dell-g15
+
+RewriteRule ^produto/([0-9]+)/([a-zA-Z0-9-]+)/?$ detalhe-produto.php?id=$1&slug=$2 [L,QSA]
+
+# --------------------------------------------------
+# FORÇAR HTTPS
+# --------------------------------------------------
+# Use apenas em hospedagem com SSL ativo.
+# Em localhost, deixe comentado.
+#
+# RewriteCond %{HTTPS} !=on
+# RewriteRule ^ https://site.com.br%{REQUEST_URI} [R=301,L]
+
+
+# --------------------------------------------------
+# REMOVER .PHP DA URL
+# --------------------------------------------------
+# Exemplo:
+# /sobre acessa internamente /sobre.php
+# /contato acessa internamente /contato.php
+
+# Verifica se a URL acessada NÃO é uma pasta existente
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Verifica se existe um arquivo .php correspondente
+RewriteCond %{REQUEST_FILENAME}.php -f
+
+# Reescreve a URL para o arquivo PHP correspondente
+RewriteRule ^(.+?)/?$ $1.php [L]
+
+
+# --------------------------------------------------
+# PÁGINAS DE ERRO PERSONALIZADAS
+# --------------------------------------------------
+# Como seu projeto está em localhost/aula19/,
+# o caminho precisa começar com /aula19/
+
+ErrorDocument 403 /aula19/pagina-nao-encontrada.php
+ErrorDocument 404 /aula19/pagina-nao-encontrada.php
+ErrorDocument 405 /aula19/pagina-nao-encontrada.php
+ErrorDocument 406 /aula19/pagina-nao-encontrada.php
+ErrorDocument 407 /aula19/pagina-nao-encontrada.php
+ErrorDocument 408 /aula19/pagina-nao-encontrada.php
+ErrorDocument 409 /aula19/pagina-nao-encontrada.php
+ErrorDocument 500 /aula19/pagina-nao-encontrada.php
+
+
+# --------------------------------------------------
+# BLOQUEIO DE ARQUIVOS SENSÍVEIS
+# --------------------------------------------------
+# Bloqueia arquivos ocultos, .env, composer, package, README etc.
+<FilesMatch "(^\.|\.env|composer\.(json|lock)$|package(-lock)?\.json$|yarn\.lock$|README(\.md)?$|phpunit\.xml(\.dist)?$)">
+    Require all denied
+</FilesMatch>
+
+
+# --------------------------------------------------
+# BLOQUEIO DE ARQUIVOS DE BACKUP, LOG E CONFIG
+# --------------------------------------------------
+# Bloqueia extensões que normalmente não devem ser públicas
+<FilesMatch "\.(bak|old|orig|save|swp|tmp|log|ini|conf|sql|sh|bat)$">
+    Require all denied
+</FilesMatch>
+
+
+# --------------------------------------------------
+# BLOQUEIO DE PASTAS DE VERSIONAMENTO
+# --------------------------------------------------
+# Impede acesso a pastas como .git, .svn, .hg e .bzr
+RedirectMatch 403 /(\.git|\.svn|\.hg|\.bzr)
+
+
+# --------------------------------------------------
+# BLOQUEIO DE MÉTODOS HTTP PERIGOSOS
+# --------------------------------------------------
+# Permite apenas GET, POST e HEAD
+# Bloqueia PUT, DELETE, PATCH, OPTIONS, TRACE etc.
+<LimitExcept GET POST HEAD>
+    Require all denied
+</LimitExcept>
+
+
+# --------------------------------------------------
+# HEADERS BÁSICOS DE SEGURANÇA
+# --------------------------------------------------
+# Só funciona se o módulo headers estiver ativo no Apache
+<IfModule mod_headers.c>
+
+    # Evita que o navegador tente adivinhar o tipo de arquivo
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Ajuda a evitar que o site seja carregado dentro de iframe externo
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Controla o envio de informações de origem entre páginas
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+</IfModule>
