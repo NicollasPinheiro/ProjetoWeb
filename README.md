@@ -4,6 +4,8 @@ Este projeto consiste em um site de e-commerce desenvolvido em PHP com integraç
 
 Os produtos são apresentados com imagens, descrições, preços e demais informações cadastradas, proporcionando uma experiência semelhante à de uma loja virtual real. O gerenciamento dos dados é realizado por meio do phpMyAdmin, permitindo o cadastro e a manutenção dos produtos no banco de dados.
 
+Atenção: Projeto ainda não esta concluido, é esperado erros na interface.
+
  Funcionalidades
 
 * Listagem dinâmica de produtos.
