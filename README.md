@@ -138,9 +138,28 @@ $database = "nome_do_banco";
 2. Inicie o WAMP Server.
 3. Abra o navegador e acesse:
 
+### Configuração do ENV:
+1. Crie um arquivo .env no projeto
+2. coloque esse texto:
+   URL_SITE=http://localhost/301_estudante_
+# =====================================================
+# SMTP / EMAIL
+# =====================================================
+MAIL_CONNECTION=mysql
+#servidor
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+#coloque seu email
+MAIL_USERNAME=
+MAIL_PASSWORD= (senha de aplicação)
+MAIL_ENCRYPTION=tls
+
+MAIL_FROM_ADDRESS=
+MAIL_FROM_NAME=
+
    ```
    http://localhost/nome-do-projeto
    ```
-4. O sistema deverá carregar os produtos e demais informações diretamente do banco de dados importado.
+5. O sistema deverá carregar os produtos e demais informações diretamente do banco de dados importado.
 
 
